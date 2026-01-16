@@ -1,6 +1,42 @@
 # VCF9 Singlehost configuration
 
+- Do not use .local domain names
 
+Enable SSH in the VCF installer
+```
+Edit the /etc/ssh/sshd_config file.
+Set PermitRootLogin to yes or no as desired.
+sudo systemctl restart sshd
+```
+
+Enable Single host
+```
+echo "feature.vcf.vgl-29121.single.host.domain=true" >> /home/vcf/feature.properties
+echo "feature.vcf.internal.single.host.domain=true" >> /home/vcf/feature.properties
+echo 'y' | /opt/vmware/vcf/operationsmanager/scripts/cli/sddcmanager_restart_services.sh
+```
+
+Enable HTTP 
+```
+echo "lcm.depot.adapter.httpsEnabled=false" >> /opt/vmware/vcf/lcm/lcm-app/conf/application-prod.properties
+systemctl restart lcm
+```
+
+![alt text](image-9.png)
+
+- Download all the VCF 9.0.1 bits
+
+![alt text](image-10.png)
+
+- Create a snapshot of the appliance
+
+- Use json file
+
+![alt text](image-11.png)
+
+- Check
+
+![alt text](image-12.png)
 
 ![alt text](image.png)
 
